@@ -5,6 +5,7 @@ if(isset($_POST['bayar'])){
 	$id=$_SESSION['id'];
 	$nama_pendaftar=$_SESSION['nama'];
 	$namabank=$_POST['namabank'];
+  $status = 1;
 
   $nama   = $_FILES['gambar']['name'];
   $size   = $_FILES['gambar']['size'];
@@ -16,11 +17,11 @@ if(isset($_POST['bayar'])){
 
   if($error === 0){
 
-    if ($size > 9000){ 
+    if ($size > 10000){ 
     
           if($format === "jpg" || $format === "png" || $format === "JPG" || $format === "PNG" ){
             
-            if(simpantransaksi($id,$nama_pendaftar,$namabank,$lokasi)){
+            if(simpantransaksi($id,$nama_pendaftar,$namabank,$lokasi,$status)){
 
               echo "<script>window.location.href='user.php'</script>";
               }else{

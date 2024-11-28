@@ -63,7 +63,7 @@ $result4=tampilpembayaran($id);
                 </p>
 
                 <p>Selamat, Anda telah berhasil melakukan Aktivasi Pengisian Formulir. Silahkan melakukan pembayaran sesuai Invoice yang tayang di laman ini.</p>
-                <p>Pertanyaan dan Informasi, silahkan kontak Panitia di psb@smkinformatika.sch.id (GTalk/Hangout) atau 0218000063!</p>
+                <p>Pertanyaan dan Informasi, silahkan kontak Admin DaftarSekolah.ID 0218000063!</p>
             </div>
         </div>
 
@@ -94,7 +94,7 @@ $result4=tampilpembayaran($id);
                        PENDIDIKAN
                     </a>
                 <?php }else{?>
-                    <a class="btn btn-primary btn-block ">
+                    <a href="pendidikan.php" class="btn btn-primary btn-block ">
                         PENDIDIKAN
                     </a>
                 <?php } ?>

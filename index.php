@@ -3,38 +3,33 @@
 include 'head.php';
 
 
-if(isset($_POST['submit'])){
-  $nama=$_POST['nama'];
-  $tempat=$_POST['tempat'];
-  $date=$_POST['date'];
-  $jns_kel=$_POST['jns_kel'];
-  $agama=$_POST['agama'];
-  $nohp=$_POST['nohp'];
-  $alamat=$_POST['alamat'];
-  $provinsi=$_POST['provinsi'];
-  $no_jaket=$_POST['no_jaket'];
-  $email=$_POST['email'];
-  $konfirmemail=$_POST['konfirmemail'];
-  $kode=$_POST['kode'];
-  $date=date('dmy');
+    if(isset($_POST['submit'])){
+    $nama=$_POST['nama'];
+    $tempat=$_POST['tempat'];
+    $date=$_POST['date'];
+    $jns_kel=$_POST['jns_kel'];
+    $agama=$_POST['agama'];
+    $nohp=$_POST['nohp'];
+    $alamat=$_POST['alamat'];
+    $provinsi=$_POST['provinsi'];
+    $no_jaket=$_POST['no_jaket'];
+    $email=$_POST['email'];
+    $konfirmemail=$_POST['konfirmemail'];
+    $datestart = date('dmy');
 
-  if($email===$konfirmemail){
+    if($email===$konfirmemail){
 
-    if($_SESSION["Captcha"]==$kode){
 
-        if(daftarformulir($nama,$tempat,$date,$jns_kel,$agama,$nohp,$alamat,$provinsi,$no_jaket,$email,$date)){
-          echo "<script>alert('Pendaftaran Berhasil, Silahkan Login')</script>";
-        }else{
-          echo "<script>alert('Pendaftaran Gagal')</script>";
-        }
+            if(daftarformulir($nama,$tempat,$date,$jns_kel,$agama,$nohp,$alamat,$provinsi,$no_jaket,$email,$datestart)){
+            echo "<script>alert('Pendaftaran Berhasil, Silahkan Login')</script>";
+            }else{
+            echo "<script>alert('Pendaftaran Gagal')</script>";
+            }
+
     }else{
-      echo "<script>alert('Kode yang anda masukan salah, silahkan ulangi kembali')</script>";
+        echo "<script>alert('Email konfirmasi tidak sama, silahkan ulangi kembali')</script>";
     }
-
-  }else{
-    echo "<script>alert('Email konfirmasi tidak sama, silahkan ulangi kembali')</script>";
-  }
-}
+    }
 
 
 
@@ -200,15 +195,6 @@ if(isset($_POST['submit'])){
                     <input type="email" name="konfirmemail" class="form-control" placeholder="konfirmasi email" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Kode</label><br>
-                    <img src="captcha.php" alt="">
-                </div>
-
-                <div class="form-group">
-                    <label class="lead">Masukan Kode</label>
-                    <input type="text" name="kode" class="form-control">
-                </div>
 
                 <div class="form-group">
                     <input type="submit" name="submit" href="#" class="btn btn-block btn-primary btn-lg" value="Daftar">

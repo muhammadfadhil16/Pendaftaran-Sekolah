@@ -17,7 +17,11 @@ function tampildataortu($id){
 	$result=mysqli_query($konek,$sql);
 
 	$cek=mysqli_fetch_array($result);
-	$_SESSION['status']=$cek['status'];
+	if (isset($cek['status'])) {
+		$_SESSION['status'] = $cek['status'];
+	} else {
+		$_SESSION['status'] = null; 
+	}
 
 	if(mysqli_num_rows($result)>0){
 		return true;
@@ -35,7 +39,12 @@ function tampildok($id){
 	$result=mysqli_query($konek,$sql);
 	
 	$cek=mysqli_fetch_array($result);
-	$_SESSION['statusdok']=$cek['status'];
+	if (isset($cek['status'])) {
+		$_SESSION['statusdok']=$cek['status'];
+	} else {
+		$_SESSION['statusdok'] = null; // Atau nilai default lainnya
+	}
+	
 
 	if(mysqli_num_rows($result)>0){
 		return true;
@@ -53,7 +62,12 @@ function tampilpendidikan($id){
 	$result=mysqli_query($konek,$sql);
 	
 	$cek=mysqli_fetch_array($result);
-	$_SESSION['statusdidik']=$cek['status'];
+	if (isset($cek['status'])) {
+		$_SESSION['statusdidik']=$cek['status'];
+	} else {
+		$_SESSION['statusdidik'] = null; // Atau nilai default lainnya
+	}
+	
 
 	if(mysqli_num_rows($result)>0){
 		return true;
@@ -71,7 +85,14 @@ function tampilpembayaran($id){
 	$result=mysqli_query($konek,$sql);
 	
 	$cek=mysqli_fetch_array($result);
-	$_SESSION['statusbayar']=$cek['status'];
+
+	if (isset($cek['status'])) {
+		$_SESSION['statusbayar']=$cek['status'];
+	} else {
+		$_SESSION['statusbayar'] = null; // Atau nilai default lainnya
+	}
+	
+		
 
 	if(mysqli_num_rows($result)>0){
 		return true;
@@ -123,10 +144,10 @@ function tampilpembayaran_cetak($id){
 
 
 
-function daftarformulir($nama,$tempat,$date,$jns_kel,$agama,$nohp,$alamat,$provinsi,$no_jaket,$email,$date){
+function daftarformulir($nama,$tempat,$date,$jns_kel,$agama,$nohp,$alamat,$provinsi,$no_jaket,$email,$datestart){
 	global $konek;
 
-	$sql="INSERT INTO `formulir_mhs`(`nama_lengkap`, `tempat_lahir`, `tgl_lahir`, `jenis_kelamin`, `agama`, `no_hp`, `alamat`, `provinsi`, `no_jaket`, `email`, `tgl_daftar`) VALUES ('$nama','$tempat','$date','$jns_kel','$agama','$nohp','$alamat','$provinsi','$no_jaket','$email','$date')";
+	$sql="INSERT INTO `formulir_mhs`(`nama_lengkap`, `tempat_lahir`, `tgl_lahir`, `jenis_kelamin`, `agama`, `no_hp`, `alamat`, `provinsi`, `no_jaket`, `email`, `tgl_daftar`) VALUES ('$nama','$tempat','$date','$jns_kel','$agama','$nohp','$alamat','$provinsi','$no_jaket','$email','$datestart')";
 	
 		if (mysqli_query($konek, $sql)) {
 		    return true;
@@ -142,8 +163,12 @@ function ceklogin($email,$no_hp){
 	$query=mysqli_query($konek,$sql);
 
 	$cek=mysqli_fetch_array($query);
-	$_SESSION['id']=$cek['id'];
-	$_SESSION['nama']=$cek['nama_lengkap'];
+	if (!empty($cek) && isset($cek['id'], $cek['nama_lengkap'])) {
+		$_SESSION['id'] = $cek['id'];
+		$_SESSION['nama'] = $cek['nama_lengkap'];
+	} else {
+		die("Data tidak ditemukan. Silakan coba lagi.");
+	}
 
 	if(mysqli_num_rows($query)>0){
 		return true;
@@ -175,10 +200,10 @@ function simpandataortu($namapendaftar,$id_pendaftar,$ayah,$ibu,$wali,$alamat,$p
 		}
 }
 
-function simpantransaksi($id,$nama_pendaftar,$namabank,$lokasi){
+function simpantransaksi($id,$nama_pendaftar,$namabank,$lokasi,$status){
 	global $konek;
 
-	$sql="INSERT INTO `bukti_transfer`(`id_pendaftar`, `nama_pendaftar`, `nama_bank`, `bukti_transfer`) VALUES ('$id','$nama_pendaftar','$namabank','$lokasi')";
+	$sql="INSERT INTO `bukti_transfer`(`id_pendaftar`, `nama_pendaftar`, `nama_bank`, `bukti_transfer`, `status`) VALUES ('$id','$nama_pendaftar','$namabank','$lokasi','$status')";
 	if(mysqli_query($konek, $sql)){
 		return true;
 	}else{

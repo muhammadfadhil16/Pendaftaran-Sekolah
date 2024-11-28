@@ -95,5 +95,5 @@ $result=tampildataortu_cetak($id);
 </div>
 
 <div class="col-md-2"></div><br>
-<div style="clear: both;</div>
+<div style="clear: both;"></div>
 <?php include 'foot.php'; ?>

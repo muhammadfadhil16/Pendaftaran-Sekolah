@@ -24,7 +24,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.php">SMKINFONUSA</a>
+      <a class="navbar-brand" href="index.php">DaftarSekolah.ID</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -49,7 +49,6 @@
    <div class="jumbotron daftar">
         <center><img src="img/tut.png" alt="" width="10%"></center>
         <h1><center>Pendaftaran Siswa Baru</center></h1>
-        <h2><center>SMK INFORMATIKA NUSANTARA</center></h2>
         <center><a href="petunjuk.php" class="btn btn-primary btn-lg petunjuk">Baca Petunjuk Pendaftaran</a>
     </div>
 <style>

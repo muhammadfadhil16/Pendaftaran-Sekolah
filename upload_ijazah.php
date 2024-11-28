@@ -13,11 +13,12 @@ if(isset($_POST['simpanijazah'])){
 
   if($error === 0){
 
-    if ($size > 9000){ 
+    if ($size > 1000000){ 
     
           if($format === "jpg" || $format === "png" || $format === "JPG" || $format === "PNG" ){
             
             if(simpanijazah($id_pendaftar,$lokasi_foto)){
+              echo "<script>alert('Foto berhasil di simpan')</script>";
               echo "<script>window.location.href='dokumen.php'</script>";
               }else{
                 echo mysqli_error($konek);
